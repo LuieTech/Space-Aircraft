@@ -18,6 +18,8 @@ class Game{
         this.monsterAudio.volume = 0.1;
         this.gameOverAudio = new Audio("/assets/audio/gameOverSound.mp3")
         this.gameOverAudio.volume = 0.1;
+        this.breakingAudio = new Audio("/assets/audio/breaking-sound.wav")
+        this.breakingAudio.volume = 0.1;
         this.tickAliens = 0;
         this.tickGreens = 0;
         this.tickMonster = 0;
@@ -33,8 +35,8 @@ class Game{
                 this.move();
                 this.draw();
                 this.checkBulletCollisionToEnemies();
-                this.checkBulletCollisionToGreens();
-                this.checkBulletCollisionToMonsterBullet()
+                // this.checkBulletCollisionToGreens();
+                // this.checkBulletCollisionToMonsterBullet()
                 this.checkBulletCollisionToMonster()
                 this.checkMonsterBulletCollision(); 
                 this.checkEnemiesCollision();
@@ -105,6 +107,7 @@ class Game{
             if (colx && coly) {
                 
                 this.info.lives--
+                this.breakingAudio.play()
                 eBody.active = false;
                                
             }
@@ -120,7 +123,7 @@ class Game{
             const coly = craft.y + craft.h > green.y && craft.y < green.y + green.h;
 
             if (colx && coly) {
-                
+                this.breakingAudio.play()
                 this.info.lives--
                 green.active = false;
                 
@@ -204,38 +207,38 @@ class Game{
             })
         })
     }
-    checkBulletCollisionToGreens(){
-        this.aircraft.weapon.bullets.forEach((bullet, bulletIndex) => {
-            this.greens.forEach((gBody, greenIndex) => {
-                const colx = bullet.x + bullet.r > gBody.x && bullet.x < gBody.x + gBody.w;
-                const coly = bullet.y + bullet.r > gBody.y && bullet.y < gBody.y + gBody.h;
+    // checkBulletCollisionToGreens(){
+    //     this.aircraft.weapon.bullets.forEach((bullet, bulletIndex) => {
+    //         this.greens.forEach((gBody, greenIndex) => {
+    //             const colx = bullet.x + bullet.r > gBody.x && bullet.x < gBody.x + gBody.w;
+    //             const coly = bullet.y + bullet.r > gBody.y && bullet.y < gBody.y + gBody.h;
 
-                if(colx && coly) {
-                    this.greens.splice(greenIndex, 1);
-                    this.aircraft.weapon.bullets.splice(bulletIndex, 1)
-                    this.info.score++
+    //             if(colx && coly) {
+    //                 this.greens.splice(greenIndex, 1);
+    //                 this.aircraft.weapon.bullets.splice(bulletIndex, 1)
+    //                 this.info.score++
 
-                }
-            })
-        })
-    }
+    //             }
+    //         })
+    //     })
+    // }
 
-    checkBulletCollisionToMonsterBullet(){
-        if(this.monster){
-        this.aircraft.weapon.bullets.forEach((bullet, bulletIndex) => {
-            this.monster.monsterWeapon.bullets.forEach((mb, mbIndex) => {
-                const colx = bullet.x + bullet.r > mb.x && bullet.x < mb.x + mb.w;
-                const coly = bullet.y + bullet.r > mb.y && bullet.y < mb.y + mb.h;
+    // checkBulletCollisionToMonsterBullet(){
+    //     if(this.monster){
+    //     this.aircraft.weapon.bullets.forEach((bullet, bulletIndex) => {
+    //         this.monster.monsterWeapon.bullets.forEach((mb, mbIndex) => {
+    //             const colx = bullet.x + bullet.r > mb.x && bullet.x < mb.x + mb.w;
+    //             const coly = bullet.y + bullet.r > mb.y && bullet.y < mb.y + mb.h;
 
-                if(colx && coly) {
-                    this.monster.monsterWeapon.bullets.splice(mbIndex, 1);
-                    this.aircraft.weapon.bullets.splice(bulletIndex, 1)
-                    this.info.score++
-                }
-            })
-        })
-    }
-    }
+    //             if(colx && coly) {
+    //                 this.monster.monsterWeapon.bullets.splice(mbIndex, 1);
+    //                 this.aircraft.weapon.bullets.splice(bulletIndex, 1)
+    //                 this.info.score++
+    //             }
+    //         })
+    //     })
+    // }
+    // }
 
     gameOver(){
 
