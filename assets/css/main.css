@@ -1,37 +1,80 @@
-canvas {
-    border: 1px solid black;
-  }
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
 
-  .start-div{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    width: 100vw;
-    height: 100vh;
-    
-    
-  }
+body {
+  background-image: url("../img/introImage.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  /* overflow: hidden;  */
+}
 
-  #start-btn{
-    background-color: gray;
-    color: whitesmoke;
-    
-    top: 40%;
-    width: 150px;
-    height: 80px;
-    border-radius: 15px;
-    border-color: whitesmoke;
-    font-weight: bolder;
-    font-size: large;
-    transition: all 0.3s ease
-  }
+#canvas {
 
-  #start-btn:hover{
-    transform: scale(1.1)
-  }
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  #arrows{
+}
 
-  }
+.hidden{
+  display: none;
+}
+
+
+#intro-image {
+
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding-top: 10%;
+  padding-left: 10%;
+  gap: 40px;
+  color: antiquewhite;
+  line-height: 40px;
+}
+
+#start-btn {
+  background-color: black;
+  color: whitesmoke;
+  top: 40%;
+  width: 150px;
+  height: 80px;
+  border-radius: 15px;
+  border-color: whitesmoke;
+  font-weight: bolder;
+  font-size: large;
+  transition: all 0.3s ease
+}
+
+#start-btn:hover {
+  transform: scale(1.1)
+}
+
+#intro-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+p {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: large;
+}
+
+h2 {
+  color: black;
+}
+
+img {
+  margin-left: 50px;
+}

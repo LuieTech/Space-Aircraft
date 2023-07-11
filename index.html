@@ -4,22 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/main.css">
-
+    <link rel="icon" type="image/x-icon" href="/assets/img/aircraft2.png">
     <title>Game Template</title>
 </head>
 <body>
-    <canvas id="main-canvas" width="800" height="400"></canvas>
     
-    <button id="start-btn">START</button>
+    <div id="intro-screen">
+        <div id="intro-image">
+        <br>
+        <button id="start-btn">START GAME</button>
+        <p> The time to defend our planet has arrived<br>men made contact with Aliens and provided too much details<br>now they are here to take natural resources from us<br><span><i> War has started ...</i></span></p>
+        <div>
+            <h2>Controls:</h2>
+            <img src="./assets/img/space-arrows.png" alt="space-arrows" width="120" height="120">
+        </div>
+    </div>
+    </div>
 
-   
+    <div id="canvas" class="hidden">
+        <canvas id="main-canvas" width="800" height="400"></canvas>
+    </div>
+    <div id ="game-over"></div>
     
     <script src="./assets/js/constans.js"></script>
     <script src="./assets/js/models/background.js"></script>
+    <script src="./assets/js/models/bullet.js"></script> 
+    <script src="./assets/js/models/weapon.js"></script>
     <script src="./assets/js/models/aircraft.js"></script>
-    <!-- <script src="./assets/js/models/weapon.js"></script>
-    <script src="./assets/js/models/bullet.js"></script>
-    <script src="./assets/js/models/enemy.js"></script> -->
+    <script src="./assets/js/models/green.js"></script>
+    <script src="./assets/js/models/alien.js"></script>
+    <script src="./assets/js/models/monsterBullet.js"></script>
+    <script src="./assets/js/models/monsterWeapon.js"></script>
+    <script src="./assets/js/models/monster.js"></script>
+    <script src="./assets/js/models/info.js"></script>
     <script src="./assets/js/models/game.js"></script>
     <script src="./assets/js/index.js"></script>
 </body>

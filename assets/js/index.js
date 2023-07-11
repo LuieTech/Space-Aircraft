@@ -1,6 +1,8 @@
 const canvasId = "main-canvas";
 const canvas = document.getElementById(canvasId);
+const canvasContainer = document.getElementById("canvas")
 const startBtn = document.getElementById("start-btn");
+const introScreen = document.getElementById("intro-screen")
 
 const game = new Game(canvasId);
 
@@ -12,12 +14,11 @@ window.addEventListener("keyup", (event) => {
   game.onKeyUp(event);
 });
 
-canvas.style.display = "none";
-startBtn.focus();
 
 document.getElementById("start-btn").onclick = () => {
-  startBtn.remove();
-  canvas.style.display = "block";
+  
+  introScreen.remove()
+  canvasContainer.classList.remove("hidden");
 
   game.start();
 };

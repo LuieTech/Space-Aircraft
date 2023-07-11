@@ -17,7 +17,7 @@ class Background {
     }
 
     move(){
-        this.x += BACKGROUND_SPEED;
+        this.x -= BACKGROUND_SPEED;
 
         if(this.x < -this.w){
             this.x = 0;
