@@ -24,6 +24,7 @@ class Game{
         this.tickGreens = 0;
         this.tickMonster = 0;
         this.finalShoot = 0;
+        this.tickTime = 0;
 
     }
 
@@ -35,8 +36,8 @@ class Game{
                 this.move();
                 this.draw();
                 this.checkBulletCollisionToEnemies();
-                // this.checkBulletCollisionToGreens();
-                // this.checkBulletCollisionToMonsterBullet()
+                this.checkBulletCollisionToGreens();
+                this.checkBulletCollisionToMonsterBullet()
                 this.checkBulletCollisionToMonster()
                 this.checkMonsterBulletCollision(); 
                 this.checkEnemiesCollision();
@@ -46,22 +47,23 @@ class Game{
                 this.clearAliens();
                 this.aircraft.weapon.clearBullets();
                 this.audio.play()
-                if(this.tickAliens > 120){
+                if(this.tickAliens > 80){
                     this.addAlien()
                     this.tickAliens = 0;
                     
                 }
-                if(this.tickGreens > 150){
+                if(this.info.score > 5){
+                    if(this.tickGreens > 120){
                     this.addGreens();
                     this.tickGreens = 0;
-                    
-                }
-                if(this.info.score === 2){
+                    }
+                }  
+    
+                if(this.info.score === 20){
                     this.addMonster();
                     
-                    
                 }
-                if(this.tickMonster > 160 && this.monster){
+                if(this.tickMonster > 120 && this.monster){
                     this.monster.shoot();
                     this.tickMonster = 0;
                    
@@ -158,7 +160,7 @@ class Game{
             const coly = craft.y + craft.h > mb.y && craft.y < mb.y + mb.h;
 
             if (colx && coly) {
-                
+                this.breakingAudio.play()
                 this.info.lives--
                 mb.active = false;
             }
@@ -181,8 +183,9 @@ class Game{
                     this.finalShoot++
                     this.info.score++
 
-                    if(this.finalShoot === 5){
-                        this.stop();
+                    if(this.finalShoot === 30){
+                        this.monster = null;
+                        this.finalShoot = 0;
                         
                     }
 
@@ -207,38 +210,38 @@ class Game{
             })
         })
     }
-    // checkBulletCollisionToGreens(){
-    //     this.aircraft.weapon.bullets.forEach((bullet, bulletIndex) => {
-    //         this.greens.forEach((gBody, greenIndex) => {
-    //             const colx = bullet.x + bullet.r > gBody.x && bullet.x < gBody.x + gBody.w;
-    //             const coly = bullet.y + bullet.r > gBody.y && bullet.y < gBody.y + gBody.h;
+    checkBulletCollisionToGreens(){
+        this.aircraft.weapon.bullets.forEach((bullet, bulletIndex) => {
+            this.greens.forEach((gBody, greenIndex) => {
+                const colx = bullet.x + bullet.r > gBody.x && bullet.x < gBody.x + gBody.w;
+                const coly = bullet.y + bullet.r > gBody.y && bullet.y < gBody.y + gBody.h;
 
-    //             if(colx && coly) {
-    //                 this.greens.splice(greenIndex, 1);
-    //                 this.aircraft.weapon.bullets.splice(bulletIndex, 1)
-    //                 this.info.score++
+                if(colx && coly) {
+                    this.greens.splice(greenIndex, 1);
+                    this.aircraft.weapon.bullets.splice(bulletIndex, 1)
+                    this.info.score++
 
-    //             }
-    //         })
-    //     })
-    // }
+                }
+            })
+        })
+    }
 
-    // checkBulletCollisionToMonsterBullet(){
-    //     if(this.monster){
-    //     this.aircraft.weapon.bullets.forEach((bullet, bulletIndex) => {
-    //         this.monster.monsterWeapon.bullets.forEach((mb, mbIndex) => {
-    //             const colx = bullet.x + bullet.r > mb.x && bullet.x < mb.x + mb.w;
-    //             const coly = bullet.y + bullet.r > mb.y && bullet.y < mb.y + mb.h;
+    checkBulletCollisionToMonsterBullet(){
+        if(this.monster){
+        this.aircraft.weapon.bullets.forEach((bullet, bulletIndex) => {
+            this.monster.monsterWeapon.bullets.forEach((mb, mbIndex) => {
+                const colx = bullet.x + bullet.r > mb.x && bullet.x < mb.x + mb.w;
+                const coly = bullet.y + bullet.r > mb.y && bullet.y < mb.y + mb.h;
 
-    //             if(colx && coly) {
-    //                 this.monster.monsterWeapon.bullets.splice(mbIndex, 1);
-    //                 this.aircraft.weapon.bullets.splice(bulletIndex, 1)
-    //                 this.info.score++
-    //             }
-    //         })
-    //     })
-    // }
-    // }
+                if(colx && coly) {
+                    this.monster.monsterWeapon.bullets.splice(mbIndex, 1);
+                    this.aircraft.weapon.bullets.splice(bulletIndex, 1)
+                    this.info.score++
+                }
+            })
+        })
+    }
+    }
 
     gameOver(){
 
