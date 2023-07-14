@@ -12,7 +12,7 @@ class Greens {
         this.active = true;
 
         this.sprite = new Image();
-        this.sprite.src = "/assets/img/green.png"
+        this.sprite.src = "./assets/img/green.png"
         this.sprite.horizontalFrame = 4;
         this.sprite.horizontalFrameIndex = 0
         this.sprite.verticalFrame = 1;

@@ -13,7 +13,7 @@ class Alien {
 
 
         this.sprite = new Image();
-        this.sprite.src = "/assets/img/aliens.png"
+        this.sprite.src = "./assets/img/aliens.png"
         this.sprite.horizontalFrame = 8;
         this.sprite.horizontalFrameIndex = 0;
         this.sprite.verticalFrame = 1;

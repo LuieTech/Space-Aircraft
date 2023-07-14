@@ -15,7 +15,7 @@ class Monster {
         this.active = true;
         this.monsterWeapon = new MonsterWeapon(this.ctx, this.x + MONSTER_WIDTH, this.y + MONSTER_HEIGHT/2 )
         this.sprite = new Image();
-        this.sprite.src = "/assets/img/green.png"
+        this.sprite.src = "./assets/img/green.png"
         this.sprite.horizontalFrame = 4;
         this.sprite.horizontalFrameIndex = 0
         this.sprite.verticalFrame = 1;

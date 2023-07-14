@@ -17,7 +17,7 @@ class Aircraft{
         this.weapon = new Weapon(this.ctx, this.x + this.w, this.y + this.h / 2);
 
         this.sprite = new Image();
-        this.sprite.src = "/assets/img/aircraft.png";
+        this.sprite.src = "./assets/img/aircraft.png";
         this.sprite.verticalFrames = 1;
         this.sprite.verticalFrameIndex = 0;
         this.sprite.horizontalFrames = 5;

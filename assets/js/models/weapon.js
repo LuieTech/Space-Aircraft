@@ -4,7 +4,7 @@ class Weapon {
         
         this.x = x;
         this.y = y;
-        this.audio = new Audio("/assets/audio/laser.wav");
+        this.audio = new Audio("./assets/audio/laser.wav");
         this.audio.volume = 0.5;
 
         this.bullets = [];
