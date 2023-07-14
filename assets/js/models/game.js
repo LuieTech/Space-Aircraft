@@ -12,13 +12,13 @@ class Game{
         this.enemies = [];
         this.greens = [];
         this.info = new Info(this.ctx)
-        this.audio = new Audio("/assets/audio/suspense-686.wav")
+        this.audio = new Audio("./assets/audio/suspense-686.wav")
         this.audio.volume = 0.1;
-        this.monsterAudio = new Audio("/assets/audio/monsterSound.wav");
+        this.monsterAudio = new Audio("./assets/audio/monsterSound.wav");
         this.monsterAudio.volume = 0.1;
-        this.gameOverAudio = new Audio("/assets/audio/gameOverSound.mp3")
+        this.gameOverAudio = new Audio("./assets/audio/gameOverSound.mp3")
         this.gameOverAudio.volume = 0.1;
-        this.breakingAudio = new Audio("/assets/audio/breaking-sound.wav")
+        this.breakingAudio = new Audio("./assets/audio/breaking-sound.wav")
         this.breakingAudio.volume = 0.1;
         this.tickAliens = 0;
         this.tickGreens = 0;
@@ -47,7 +47,7 @@ class Game{
                 this.clearAliens();
                 this.aircraft.weapon.clearBullets();
                 this.audio.play()
-                if(this.tickAliens > 80){
+                if(this.tickAliens > 100){
                     this.addAlien()
                     this.tickAliens = 0;
                     
@@ -59,7 +59,7 @@ class Game{
                     }
                 }  
     
-                if(this.info.score === 20){
+                if(this.info.score === 10){
                     this.addMonster();
                     
                 }

@@ -10,7 +10,7 @@ class Background {
         this.vx = BACKGROUND_SPEED;
         
         this.sprite = new Image();
-        this.sprite.src = "/assets/img/space.png"
+        this.sprite.src = "./assets/img/space.png"
         this.sprite.onload = () => {
             this.sprite.isReady = true;
         };
