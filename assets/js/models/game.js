@@ -52,14 +52,14 @@ class Game{
                     this.tickAliens = 0;
                     
                 }
-                if(this.info.score > 5){
+                if(this.info.score > 10){
                     if(this.tickGreens > 120){
                     this.addGreens();
                     this.tickGreens = 0;
                     }
                 }  
     
-                if(this.info.score === 10){
+                if(this.info.score === 20){
                     this.addMonster();
                     
                 }
@@ -183,9 +183,10 @@ class Game{
                     this.finalShoot++
                     this.info.score++
 
-                    if(this.finalShoot === 30){
+                    if(this.finalShoot === 20){
                         this.monster = null;
                         this.finalShoot = 0;
+                        this.stop();
                         
                     }
 
